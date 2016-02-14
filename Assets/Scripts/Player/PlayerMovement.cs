@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Animating (float h, float v) {
 		bool walking = h !=0f || v != 0f;
-		anim.SetBool ("IsWalking", walking);
+//		anim.SetBool ("IsWalking", walking);
 	}
 
 	void Update() 
@@ -123,28 +123,28 @@ public class PlayerMovement : MonoBehaviour
 		v = Input.GetAxisRaw ("Vertical");
 //#else
 
-		if (Input.touchCount > 0) {
-			Touch myTouch = Input.touches[0];
-
-			debug.text = "Here1";
-
-			if (myTouch.phase == TouchPhase.Began) {
-				touchOrigin = myTouch.position;
-			} else if (myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0) {
-				Vector2 touchEnd = myTouch.position;
-				float x = touchEnd.x - touchOrigin.x;
-				float y = touchEnd.y - touchOrigin.y;
-				touchOrigin.x = -1;
-
-				debug.text = touchEnd.ToString();
-
-				if (Mathf.Abs(x) > Mathf.Abs(y)) {
-					h = x > 0 ? 1 : -1;
-				} else {
-					v = y > 0 ? 1 : -1;
-				}
-			}
-		}
+//		if (Input.touchCount > 0) {
+//			Touch myTouch = Input.touches[0];
+//
+//			debug.text = "Here1";
+//
+//			if (myTouch.phase == TouchPhase.Began) {
+//				touchOrigin = myTouch.position;
+//			} else if (myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0) {
+//				Vector2 touchEnd = myTouch.position;
+//				float x = touchEnd.x - touchOrigin.x;
+//				float y = touchEnd.y - touchOrigin.y;
+//				touchOrigin.x = -1;
+//
+//				debug.text = touchEnd.ToString();
+//
+//				if (Mathf.Abs(x) > Mathf.Abs(y)) {
+//					h = x > 0 ? 1 : -1;
+//				} else {
+//					v = y > 0 ? 1 : -1;
+//				}
+//			}
+//		}
 
 //#endif
 
