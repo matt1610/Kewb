@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager> {
 	public int pressedButtons = 0;
 	public UpdateUI ui;
 	public bool LevelComplete = false;
+	public int Gems = 0;
 
 	// Use this for initialization
 	void Start () {

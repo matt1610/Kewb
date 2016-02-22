@@ -10,12 +10,16 @@ public class UpdateUI : MonoBehaviour {
 	[SerializeField]
 	private Text levelComplete;
 
+	[SerializeField]
+	private Text gemCounter;
+
 	void Start () {
 		levelComplete.enabled = false;
 	}
 
 	void Update () {
 		timerLabel.text = FormatTime(GameManager.Instance.TimeRemaining);
+		gemCounter.text = GameManager.Instance.Gems.ToString();
 	}
 
 	public void ShowLevelComplete () {
