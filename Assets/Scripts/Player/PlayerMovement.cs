@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 		playerRigidBody = GetComponent<Rigidbody> ();
 	}
 
-	void FixedUpdate() {
+//	void FixedUpdate() {
 
 //		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
 //			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
@@ -45,14 +45,14 @@ public class PlayerMovement : MonoBehaviour
 //			Animating(touchDeltaPosition.x/10, touchDeltaPosition.y/10);
 //		}
 
-		if (Input.GetKey(KeyCode.Space)) {
-			Jump ();
-		}
-
-		if (Input.GetKeyDown ("g")) {
-			playerRigidBody.useGravity = !playerRigidBody.useGravity;		
-		}
-	}
+//		if (Input.GetKey(KeyCode.Space)) {
+//			Jump ();
+//		}
+//
+//		if (Input.GetKeyDown ("g")) {
+//			playerRigidBody.useGravity = !playerRigidBody.useGravity;		
+//		}
+//	}
 
 	void Move(float h, float v) {
 
@@ -110,43 +110,25 @@ public class PlayerMovement : MonoBehaviour
 //		anim.SetBool ("IsWalking", walking);
 	}
 
-	void Update() 
+	void FixedUpdate() 
 	{
+
+		if (Input.GetKey(KeyCode.Space)) {
+			Jump ();
+		}
+		
+		if (Input.GetKeyDown ("g")) {
+			playerRigidBody.useGravity = !playerRigidBody.useGravity;		
+		}
 
 
 		float h = 0f;
 		float v = 0f;
 
 
-//#if UNITY_STANDALONE || UNITY_WEBPLAYER
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw ("Vertical");
-//#else
 
-//		if (Input.touchCount > 0) {
-//			Touch myTouch = Input.touches[0];
-//
-//			debug.text = "Here1";
-//
-//			if (myTouch.phase == TouchPhase.Began) {
-//				touchOrigin = myTouch.position;
-//			} else if (myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0) {
-//				Vector2 touchEnd = myTouch.position;
-//				float x = touchEnd.x - touchOrigin.x;
-//				float y = touchEnd.y - touchOrigin.y;
-//				touchOrigin.x = -1;
-//
-//				debug.text = touchEnd.ToString();
-//
-//				if (Mathf.Abs(x) > Mathf.Abs(y)) {
-//					h = x > 0 ? 1 : -1;
-//				} else {
-//					v = y > 0 ? 1 : -1;
-//				}
-//			}
-//		}
-
-//#endif
 
 		hText.text = h.ToString();
 		vText.text = v.ToString();
