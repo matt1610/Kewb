@@ -130,8 +130,8 @@ public class PlayerMovement : MonoBehaviour
 		v = Input.GetAxisRaw ("Vertical");
 
 
-		hText.text = h.ToString();
-		vText.text = v.ToString();
+//		hText.text = h.ToString();
+//		vText.text = v.ToString();
 
 		Move (h,v);
 		Turning ();

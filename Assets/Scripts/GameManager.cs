@@ -1,32 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Kewb;
 
 public class GameManager : Singleton<GameManager> {
 
 
 	public float TimeRemaining { get; set;}
 	private float maxTime = 5 * 60;
-	public List<Button> Buttons = new List<Button>();
+	public List<Button> Buttons { get; set;}
 	public int pressedButtons = 0;
-	public UpdateUI ui;
+	public UpdateUI ui { get; set;}
 	public bool LevelComplete = false;
-	public int Gems = 0;
+	public float Gems = 0;
+	public List<Magic> MagicAbilities { get; set;}
+	public int SelectedMagic { get; set; }
 
-	// Use this for initialization
-	void Start () {
+	public string LanguageCode = "en";
+	public string LANGPATH = "/Languages/";
+
+	public Rigidbody playerRigidBody;
+
+	void Start () 
+	{
 		TimeRemaining = maxTime;
+		Debug.Log (StringContainer.GetString(1,3));
+		SelectedMagic = 0;
 	}
 
-	void Awake(){
+	void Awake()
+	{
 		ui = new UpdateUI ();
+		MagicAbilities = new List<Magic>();
+		Buttons = new List<Button>();
+		playerRigidBody = GameObject.Find("Player").GetComponent<Rigidbody>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update () 
+	{
+		HandleMagicGemCount ();
 
 		if (Input.GetKey ("r")) {
 			Application.LoadLevel(Application.loadedLevel);	
+		}
+
+		if (Input.GetKeyDown("m")) {
+			DoMagic();
 		}
 
 		if (!LevelComplete) {
@@ -44,4 +63,50 @@ public class GameManager : Singleton<GameManager> {
 			ui.ShowLevelComplete();
 		}
 	}
+
+	public void AddMagicAbility(string abilityName)
+	{
+		Magic magic;
+		switch (abilityName) 
+		{
+			case "ZeroGravity":
+				magic = new ZeroGravity();
+				break;
+			default:
+				magic = new ZeroGravity();
+				break;
+		}
+
+		GameManager.Instance.MagicAbilities.Add(magic);
+	}
+
+	public void DoMagic()
+	{
+		if (MagicAbilities.Count > SelectedMagic - 1) {
+			MagicAbilities[SelectedMagic].Execute();
+		}
+	}
+
+	public void HandleMagicGemCount()
+	{
+		if (!playerRigidBody.useGravity) {
+			Gems -= Time.deltaTime * MagicAbilities[0].GemUsage;
+		}
+
+		if (Gems < 1) {
+			playerRigidBody.useGravity = true;
+		}
+	}
+	
+	
+
+
+
+
+
+
+
+
+
+
 }

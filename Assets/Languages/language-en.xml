@@ -1,0 +1,20 @@
+
+
+<Languages>
+	<Strings>
+
+		<String page="1" key="1">
+			<Value>Welcome to Kewb</Value>
+		</String>
+
+		<String page="1" key="2">
+			<Value>Level Complete</Value>
+		</String>
+
+		<!-- Magic -->
+		<String page="2" key="1">
+			<Value>Zero Gravity</Value>
+		</String>
+
+	</Strings>
+</Languages>

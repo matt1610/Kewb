@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Kewb;
 
 public class UpdateUI : MonoBehaviour {
 
@@ -15,11 +16,12 @@ public class UpdateUI : MonoBehaviour {
 
 	void Start () {
 		levelComplete.enabled = false;
+		levelComplete.text = StringContainer.GetString (1,2);
 	}
 
 	void Update () {
 		timerLabel.text = FormatTime(GameManager.Instance.TimeRemaining);
-		gemCounter.text = GameManager.Instance.Gems.ToString();
+		gemCounter.text = ((int)GameManager.Instance.Gems).ToString ();
 	}
 
 	public void ShowLevelComplete () {
