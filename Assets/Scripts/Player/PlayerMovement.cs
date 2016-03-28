@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -36,23 +37,6 @@ public class PlayerMovement : MonoBehaviour
 		anim = GetComponent<Animator> ();
 		playerRigidBody = GetComponent<Rigidbody> ();
 	}
-
-//	void FixedUpdate() {
-
-//		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
-//			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-//			Move(touchDeltaPosition.x/10, touchDeltaPosition.y/10);
-//			Animating(touchDeltaPosition.x/10, touchDeltaPosition.y/10);
-//		}
-
-//		if (Input.GetKey(KeyCode.Space)) {
-//			Jump ();
-//		}
-//
-//		if (Input.GetKeyDown ("g")) {
-//			playerRigidBody.useGravity = !playerRigidBody.useGravity;		
-//		}
-//	}
 
 	void Move(float h, float v) {
 
@@ -122,16 +106,14 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 
+
+
 		float h = 0f;
 		float v = 0f;
 
 
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw ("Vertical");
-
-
-//		hText.text = h.ToString();
-//		vText.text = v.ToString();
 
 		Move (h,v);
 		Turning ();
@@ -153,16 +135,15 @@ public class PlayerMovement : MonoBehaviour
 
 
 	void Jump() {
-
 		isJumping = true;
 
 		if (grounded) {
 			playerRigidBody.velocity = playerRigidBody.velocity + new Vector3(0,jumpSpeed,0);
-//			playerRigidBody.AddForce(Vector3.up * jumpSpeed * 100);
 			grounded = false;
 		}
-
 	}
+
+
 
 }
 

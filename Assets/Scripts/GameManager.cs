@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager> {
 
 	void Awake()
 	{
-		ui = new UpdateUI ();
+		ui = GameObject.Find ("HUDCanvas").GetComponentsInChildren<UpdateUI> () [0];
 		MagicAbilities = new List<Magic>();
 		Buttons = new List<Button>();
 		playerRigidBody = GameObject.Find("Player").GetComponent<Rigidbody>();

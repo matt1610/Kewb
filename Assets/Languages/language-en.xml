@@ -11,6 +11,18 @@
 			<Value>Level Complete</Value>
 		</String>
 
+		<String page="3" key="1">
+			<Value>This is the first message</Value>
+		</String>
+
+		<String page="3" key="2">
+			<Value>This is the second message</Value>
+		</String>
+
+		<String page="3" key="3">
+			<Value>This is the third message</Value>
+		</String>
+
 		<!-- Magic -->
 		<String page="2" key="1">
 			<Value>Zero Gravity</Value>

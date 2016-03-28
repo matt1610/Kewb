@@ -14,9 +14,27 @@ public class UpdateUI : MonoBehaviour {
 	[SerializeField]
 	private Text gemCounter;
 
+	[SerializeField]
+	private GameObject dialoguePanel;
+
+	public Text dialogueText;
+
 	void Start () {
 		levelComplete.enabled = false;
 		levelComplete.text = StringContainer.GetString (1,2);
+		dialogueText = dialoguePanel.GetComponentsInChildren<Text> ()[0];
+		dialoguePanel.SetActive (false);
+	}
+
+	public void DisplayText(int page, int id) 
+	{
+		dialoguePanel.SetActive (true);
+		dialogueText.text = StringContainer.GetString (page, id);
+	}
+
+	public void HidePanel()
+	{
+		dialoguePanel.SetActive (false);
 	}
 
 	void Update () {

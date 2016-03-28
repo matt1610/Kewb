@@ -25,7 +25,6 @@ namespace Kewb
 
 		public void Execute() 
 		{
-			Debug.Log (Name);
 			GameManager.Instance.playerRigidBody.useGravity = !GameManager.Instance.playerRigidBody.useGravity;
 		}
 
