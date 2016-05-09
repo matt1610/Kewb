@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Talker
+  - Enemy
   layers:
   - Default
   - TransparentFX

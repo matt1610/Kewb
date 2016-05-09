@@ -41,7 +41,7 @@ public class PlayerInteractions : MonoBehaviour {
 		rayList.Add (new Ray (transform.position, Vector3.down));
 		
 		foreach (var ray in rayList) {
-			if (Physics.Raycast(ray, out hit, 2f)) {
+			if (Physics.Raycast(ray, out hit, 1f)) {
 				if (hit.collider.gameObject.tag == "Talker") {
 					dialoguePartner = hit.collider.gameObject;
 					hit.collider.gameObject.SendMessage("StartDialogue");
