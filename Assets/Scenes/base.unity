@@ -526,7 +526,7 @@ GameObject:
   - 114: {fileID: 226496952}
   m_Layer: 0
   m_Name: Baddie (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8989ecf32e83648c69d291a43ce63d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 100
 --- !u!195 &226496953
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -650,7 +651,7 @@ GameObject:
   - 114: {fileID: 248378800}
   m_Layer: 0
   m_Name: Baddie (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -666,6 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8989ecf32e83648c69d291a43ce63d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 100
 --- !u!195 &248378801
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2441,7 +2443,7 @@ GameObject:
   - 114: {fileID: 1047572640}
   m_Layer: 0
   m_Name: Baddie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2549,6 +2551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8989ecf32e83648c69d291a43ce63d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 100
 --- !u!1 &1054773003
 GameObject:
   m_ObjectHideFlags: 0
