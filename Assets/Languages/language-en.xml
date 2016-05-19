@@ -2,6 +2,10 @@
 
 <Languages>
 	<Strings>
+	
+		<String page="1" key="3">
+			<Value>Game Started</Value>
+		</String>
 
 		<String page="1" key="1">
 			<Value>Welcome to Kewb</Value>

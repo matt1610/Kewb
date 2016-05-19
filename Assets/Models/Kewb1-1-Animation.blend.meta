@@ -40,6 +40,8 @@ ModelImporter:
     7400002: ArmatureAction
     7400004: Idle
     7400006: StartRunning
+    7400008: Run
+    7400010: JumpUp
     9500000: //RootNode
     13700000: Cube_007
   materials:
@@ -184,7 +186,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -286,10 +288,122 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Run
+      takeName: ArmatureAction
+      firstFrame: 65
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/neck-head
+        weight: 1
+      - path: Armature/root/Shoulder
+        weight: 1
+      - path: Armature/root/Shoulder/TopArm
+        weight: 1
+      - path: Armature/root/Shoulder/TopArm/BottomArm
+        weight: 1
+      - path: Armature/root/Shoulder_002
+        weight: 1
+      - path: Armature/root/Shoulder_002/TopArm_002
+        weight: 1
+      - path: Armature/root/Shoulder_002/TopArm_002/BottomArm_002
+        weight: 1
+      - path: Armature/root/TopLeg
+        weight: 1
+      - path: Armature/root/TopLeg/BottomLeg
+        weight: 1
+      - path: Armature/root/TopLeg_002
+        weight: 1
+      - path: Armature/root/TopLeg_002/BottomLeg_002
+        weight: 1
+      - path: Cube_007
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: JumpUp
+      takeName: ArmatureAction
+      firstFrame: 100
+      lastFrame: 106
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/neck-head
+        weight: 1
+      - path: Armature/root/Shoulder
+        weight: 1
+      - path: Armature/root/Shoulder/TopArm
+        weight: 1
+      - path: Armature/root/Shoulder/TopArm/BottomArm
+        weight: 1
+      - path: Armature/root/Shoulder_002
+        weight: 1
+      - path: Armature/root/Shoulder_002/TopArm_002
+        weight: 1
+      - path: Armature/root/Shoulder_002/TopArm_002/BottomArm_002
+        weight: 1
+      - path: Armature/root/TopLeg
+        weight: 1
+      - path: Armature/root/TopLeg/BottomLeg
+        weight: 1
+      - path: Armature/root/TopLeg_002
+        weight: 1
+      - path: Armature/root/TopLeg_002/BottomLeg_002
+        weight: 1
+      - path: Cube_007
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .400000006
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
