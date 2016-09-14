@@ -16,6 +16,9 @@ public class GameManager : Singleton<GameManager> {
 	public List<Magic> MagicAbilities { get; set;}
 	public int SelectedMagic { get; set; }
 
+	public delegate void ClickAction();
+	public event ClickAction onClicked;
+
 	public string LanguageCode = "en";
 	public string LANGPATH = "/Languages/";
 
@@ -61,6 +64,12 @@ public class GameManager : Singleton<GameManager> {
 		if (pressedButtons == Buttons.Count) {
 			LevelComplete = true;
 			ui.ShowLevelComplete();
+		}
+
+		if (Input.GetKeyDown("e")) {
+			if (onClicked != null) {
+				onClicked();
+			}
 		}
 	}
 

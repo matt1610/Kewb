@@ -37,6 +37,13 @@ public class PlayerMovement : MonoBehaviour
 		floorMask = LayerMask.GetMask("Floor");
 		anim = GetComponent<Animator> ();
 		playerRigidBody = GetComponent<Rigidbody> ();
+
+		GameManager.Instance.onClicked += SubscribeMethod;
+	}
+
+	void SubscribeMethod()
+	{
+		Debug.Log ("From PlayerMovement.cs!");
 	}
 
 	void Move(float h, float v) {

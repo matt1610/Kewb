@@ -11,6 +11,13 @@ public class Baddie : MonoBehaviour {
 	{
 		player = GameObject.Find ("Player").transform;
 		nav = GetComponent<NavMeshAgent> ();
+
+		GameManager.Instance.onClicked += SubscribeMethod;
+	}
+
+	void SubscribeMethod()
+	{
+		Debug.Log ("From Baddie.cs!");
 	}
 
 	public void TakeHit()
