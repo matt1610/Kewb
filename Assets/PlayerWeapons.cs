@@ -8,7 +8,7 @@ public class PlayerWeapons : MonoBehaviour {
 	public float BulletSpeed;
 	public List<GameObject> GrenadeLaunchers;
 	private int launcherIndex = 0;
-	public float fireRate = 0.2f;
+	public float fireRate;
 	private float nextFire;
 
 	void Start () {
@@ -29,7 +29,7 @@ public class PlayerWeapons : MonoBehaviour {
 				) as GameObject;
 
 			Rigidbody bulletRb = bulletGameObject.GetComponent<Rigidbody>();
-			bulletRb.velocity = transform.TransformDirection(Vector3.forward * BulletSpeed);
+			bulletRb.velocity = transform.TransformDirection(Vector3.forward) * BulletSpeed;
 
 			if (launcherIndex == GrenadeLaunchers.Count - 1) {
 				launcherIndex = 0;
