@@ -7,6 +7,7 @@ TagManager:
   - Button
   - Talker
   - Enemy
+  - DontDestroyBullets
   layers:
   - Default
   - TransparentFX

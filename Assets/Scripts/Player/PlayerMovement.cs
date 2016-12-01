@@ -46,49 +46,18 @@ public class PlayerMovement : MonoBehaviour
 		Debug.Log ("From PlayerMovement.cs!");
 	}
 
-	void Move(float h, float v) {
-
-		if (h != 0 || v != 0) {
-			isRunning = true;
-			anim.SetBool("Running", true);
-		} else {
-			isRunning = false;
-			anim.SetBool("Running", false);
-		}
-
-		//If the player is jumping, use the last input before jump was pressed to continue moving in the air.
-		Vector3 move;
-		if (isJumping) {
-			move = new Vector3(hor + h * 0.35f, 0f, ver + v * 0.5f);
-			anim.SetBool("Jumping", true);
-		} else {
-			anim.SetBool("Jumping", false);
-			move = new Vector3(h, 0f, v);
-			if (h == 0 && v == 0) {
-				currentSpeed = 0;		
-			}
-		}
-
-		//Start moving slowly
-		float calcedSpeed = currentSpeed;
-		if (currentSpeed < speed) {
-			calcedSpeed = currentSpeed;
-		} else {
-			calcedSpeed = speed;
-		}
-
-		// Rigidbody.MovePosition gets passed the current position + a new position * speed * Delta time.
-		playerRigidBody.MovePosition (transform.position + move * calcedSpeed * Time.deltaTime);
-
+	void Move(float h, float v) {	
 		currentSpeed = currentSpeed + accel;
+		transform.position += transform.forward * (speed * v) * Time.deltaTime;
 
-		//Store the last non-jumping input.
-
-		if (!isJumping) {
-			ver = v;
-			hor = h;
+		RaycastHit floorHit;
+		if(Physics.Raycast(transform.position, -transform.up, out floorHit, 1f)) {
+			Debug.logger()
 		}
+	}
 
+	void Turning (float h, float v) {
+		transform.Rotate(0.0f, h * 3, 0.0f);
 	}
 
 	void Turning () {
@@ -134,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 		v = Input.GetAxisRaw ("Vertical");
 
 		Move (h,v);
-		Turning ();
+		Turning (h, v);
 		Animating (h, v);
 
 

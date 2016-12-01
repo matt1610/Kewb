@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Kewb;
 
 public class PlayerWeapons : MonoBehaviour {
 
@@ -29,7 +30,10 @@ public class PlayerWeapons : MonoBehaviour {
 				) as GameObject;
 
 			Rigidbody bulletRb = bulletGameObject.GetComponent<Rigidbody>();
-			bulletRb.velocity = transform.TransformDirection(Vector3.forward) * BulletSpeed;
+
+			IProjectile projectile = GrenadeLauncherProjectile.GetComponent<IProjectile>();
+
+			bulletRb.velocity = transform.TransformDirection(projectile.FireAngle) * projectile.Speed;
 
 			if (launcherIndex == GrenadeLaunchers.Count - 1) {
 				launcherIndex = 0;

@@ -86,6 +86,8 @@ public class GameManager : Singleton<GameManager> {
 				break;
 		}
 
+		Debug.Log (abilityName);
+
 		GameManager.Instance.MagicAbilities.Add(magic);
 	}
 
