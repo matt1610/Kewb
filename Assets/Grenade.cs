@@ -15,6 +15,8 @@ public class Grenade : MonoBehaviour, IProjectile {
 		set {Speed = speed;} 
 	}
 
+	public float Damage = 30f;
+
 	ParticleSystem particleSystem;
 
 	[SerializeField]
@@ -36,6 +38,12 @@ public class Grenade : MonoBehaviour, IProjectile {
 		if (other.gameObject.tag != "Gun" && other.gameObject.tag != "Player") {
 			particleSystem.Emit (500);
 			Destroy (gameObject,0.15f);
+
+			IEnemy enemy = other.collider.gameObject.GetComponent<IEnemy>();
+			if (enemy == null) 
+				return;
+
+			enemy.TakeHit(Damage);
 		}
 
 	}

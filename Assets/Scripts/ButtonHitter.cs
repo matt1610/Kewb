@@ -8,7 +8,7 @@ public class ButtonHitter : MonoBehaviour {
 			Button button = collision.gameObject.GetComponent<Button>();
 			if (!button.Pressed) {
 				button.Pressed = true;
-				GameManager.Instance.pressedButtons++;
+				GameManager.Instance.PressedButtons++;
 			}
 		}
 	}

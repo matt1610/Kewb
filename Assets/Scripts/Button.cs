@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Kewb;
 
-public class Button : MonoBehaviour {
+public class Button : MonoBehaviour, ICollideable {
 
 	public bool Pressed = false;
 	private bool moving = false;
@@ -15,8 +16,18 @@ public class Button : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+	}
+
+	public void CollidedWithCharacter(GameObject character) {
+		
+		if(!Pressed) {
+			GameManager.Instance.PressedButtons++;
+		}
+
+		Pressed = true;
+
 		if (Pressed && !moved) {
-//			transform.Translate(Vector3.down * Time.deltaTime);
 			Renderer rend = GetComponent<Renderer>();
 			rend.material.color = Color.red;
 

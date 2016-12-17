@@ -8,6 +8,7 @@ TagManager:
   - Talker
   - Enemy
   - DontDestroyBullets
+  - Floor
   layers:
   - Default
   - TransparentFX

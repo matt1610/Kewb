@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	private bool isJumping = false;
 	private bool isSpinning = false;
 	private bool isRunning = false;
+	private bool sideWays = false;
 
 	public Animator anim;
 	Rigidbody playerRigidBody;
@@ -30,13 +31,16 @@ public class PlayerMovement : MonoBehaviour
 	public Text vText;
 	public Text debug;
 
-	private Vector2 touchOrigin = Vector2.one;
+	public CharacterController controller;
+
+	// private Vector2 touchOrigin = Vector2.one;
 
 
 	void Awake() {
 		floorMask = LayerMask.GetMask("Floor");
 		anim = GetComponent<Animator> ();
 		playerRigidBody = GetComponent<Rigidbody> ();
+		// controller = gameObject.GetComponent<CharacterController>();
 
 		GameManager.Instance.onClicked += SubscribeMethod;
 	}
@@ -47,13 +51,24 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	void Move(float h, float v) {	
-		currentSpeed = currentSpeed + accel;
-		transform.position += transform.forward * (speed * v) * Time.deltaTime;
+		// currentSpeed = currentSpeed + accel;
+		// transform.position += transform.forward * (speed * v) * Time.deltaTime;
 
-		RaycastHit floorHit;
-		if(Physics.Raycast(transform.position, -transform.up, out floorHit, 1f)) {
-			Debug.logger()
-		}
+		// controller.SimpleMove(Vector3.forward);
+	}
+
+	void OnCollisionEnter(Collision other) {
+		// if(other.gameObject.tag == "Floor") {
+		// 	sideWays = transform.rotation.eulerAngles.x > 45 || transform.rotation.eulerAngles.x < -45 ||
+		// 	transform.rotation.eulerAngles.z > 45 || transform.rotation.eulerAngles.z < -45;
+		// }
+	}
+
+	void RotateBackUpright() {
+		Quaternion target = Quaternion.Euler(0, transform.rotation.y, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * 2.0f);
+		sideWays = transform.rotation.eulerAngles.x > 45 || transform.rotation.eulerAngles.x < -45 ||
+		transform.rotation.eulerAngles.z > 45 || transform.rotation.eulerAngles.z < -45;
 	}
 
 	void Turning (float h, float v) {
@@ -92,7 +107,10 @@ public class PlayerMovement : MonoBehaviour
 			playerRigidBody.useGravity = !playerRigidBody.useGravity;		
 		}
 
-
+		// if(sideWays) {
+		// 	RotateBackUpright();
+		// 	Debug.Log("Trying to fucking rotate back");
+		// }
 
 
 		float h = 0f;
@@ -133,22 +151,3 @@ public class PlayerMovement : MonoBehaviour
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

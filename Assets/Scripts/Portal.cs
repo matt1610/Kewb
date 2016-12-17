@@ -1,44 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Kewb;
 
-public class Portal : MonoBehaviour {
+public class Portal : MonoBehaviour, ICollideable {
 
 	public Portal Sister;
 	public bool Ready = true;
-	public Rigidbody PlayerRb;
 
 	void Awake () {
-		PlayerRb = GameObject.Find ("Player").GetComponent<Rigidbody> ();
+		
 	}
 
 	void Update () {
-	
+
 	}
 
-    void OnCollisionEnter(Collision other)
-    {
-		if (other.gameObject.name == "Player" && Ready)
+	void Teleport(GameObject go) {
+		if (Ready)
         {
 			Sister.Ready = false;
 			Vector3 newPos = new Vector3(
 				Sister.transform.position.x, 
 				Sister.transform.position.y + 0.5f, 
 				Sister.transform.position.z);
-			other.gameObject.transform.position = newPos;
-			PlayerRb.velocity = new Vector3(PlayerRb.velocity.x,
-			                                  10,
-			                                  PlayerRb.velocity.z);
+			go.transform.position = newPos;
+
+			StartCoroutine(WaitToReEnable());
 
         }
+	}
+
+	void OnCollisionEnter(Collision other)
+    {
+		Teleport(other.gameObject);
     }
+
+	public void CollidedWithCharacter(GameObject go) {
+		Teleport(go);
+	}
 
 	void OnCollisionExit(Collision other) 
 	{
-	
-		if (other.gameObject.name == "Player") {
-			Ready = true;
-		}
-	
+		Ready = true;
 	}
+
+	void OnTriggerExit()
+	{
+		Ready = true;
+	}
+
+	IEnumerator WaitToReEnable() {
+        yield return new WaitForSeconds(2);
+		Sister.Ready = true;
+    }
 
 }

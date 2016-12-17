@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Kewb;
 
-public class Baddie : MonoBehaviour {
+public class Baddie : MonoBehaviour, IEnemy {
 
 	private Transform player;
 	NavMeshAgent nav;
-	public int Health = 100;
+	public float Health = 100;
 
 	void Awake() 
 	{
@@ -20,9 +21,9 @@ public class Baddie : MonoBehaviour {
 		Debug.Log ("From Baddie.cs!");
 	}
 
-	public void TakeHit()
+	public void TakeHit(float damage)
 	{
-		Health = Health - 10;
+		Health = Health - damage;
 		if (Health <= 0) {
 			Destroy(gameObject);
 		}

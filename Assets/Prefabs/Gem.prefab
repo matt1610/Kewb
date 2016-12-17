@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 412234}
   - 33: {fileID: 3341560}
   - 23: {fileID: 2301558}
-  - 64: {fileID: 6414632}
   - 114: {fileID: 11438118}
+  - 65: {fileID: 65000011263455276}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -25,9 +25,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140756}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: -30.1499996, y: .37500003, z: -3.53309774}
-  m_LocalScale: {x: .140994444, y: .115669914, z: .341118187}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -30.15, y: 0.37500003, z: -3.5330977}
+  m_LocalScale: {x: 0.14099444, y: 0.11566991, z: 0.3411182}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -40,19 +41,22 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 421303d6928814a15a2ed895fde5ce36, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -63,18 +67,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140756}
-  m_Mesh: {fileID: 4300000, guid: aa6ae2812d65d4db89ceb985455874f6, type: 3}
---- !u!64 &6414632
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140756}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: aa6ae2812d65d4db89ceb985455874f6, type: 3}
 --- !u!114 &11438118
 MonoBehaviour:
@@ -99,3 +91,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140756}
   m_IsPrefabParent: 1
+--- !u!65 &65000011263455276
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140756}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.76, y: 2.15, z: 2.73}
+  m_Center: {x: 0.00000011920929, y: 0.060800612, z: 0.18352646}

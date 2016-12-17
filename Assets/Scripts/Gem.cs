@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Kewb;
 
-public class Gem : MonoBehaviour {
+public class Gem : MonoBehaviour, ICollideable {
 
 	public float Speed;
 
@@ -14,10 +15,16 @@ public class Gem : MonoBehaviour {
 		transform.Rotate(Vector3.up, Speed * Time.deltaTime);
 	}
 
-	void OnCollisionEnter(Collision other) {
+	void OnControllerColliderHit(ControllerColliderHit other) {
+		Debug.Log(other.gameObject.name);
 		if (other.gameObject.name == "Player") {
 			GameManager.Instance.Gems++;
 			Destroy(gameObject);
 		}
+	}
+
+	public void CollidedWithCharacter(GameObject go) {
+		GameManager.Instance.Gems++;
+		Destroy(gameObject);
 	}
 }

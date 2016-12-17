@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager> {
 	public float TimeRemaining { get; set;}
 	private float maxTime = 5 * 60;
 	public List<Button> Buttons { get; set;}
-	public int pressedButtons = 0;
+	public int PressedButtons = 0;
 	public UpdateUI ui { get; set;}
 	public bool LevelComplete = false;
 	public float Gems = 0;
@@ -52,7 +52,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 
 		if (!LevelComplete) {
-			TimeRemaining -= Time.deltaTime;		
+			TimeRemaining -= Time.deltaTime;
 		}
 
 		if (TimeRemaining <= 0) 
@@ -61,7 +61,7 @@ public class GameManager : Singleton<GameManager> {
 			TimeRemaining = maxTime;
 		}
 
-		if (pressedButtons == Buttons.Count) {
+		if (PressedButtons == Buttons.Count) {
 			LevelComplete = true;
 			ui.ShowLevelComplete();
 		}
@@ -100,13 +100,13 @@ public class GameManager : Singleton<GameManager> {
 
 	public void HandleMagicGemCount()
 	{
-		if (!playerRigidBody.useGravity) {
-			Gems -= Time.deltaTime * MagicAbilities[0].GemUsage;
-		}
+		// if (!playerRigidBody.useGravity) {
+		// 	Gems -= Time.deltaTime * MagicAbilities[0].GemUsage;
+		// }
 
-		if (Gems < 1) {
-			playerRigidBody.useGravity = true;
-		}
+		// if (Gems < 1) {
+		// 	playerRigidBody.useGravity = true;
+		// }
 	}
 	
 	
