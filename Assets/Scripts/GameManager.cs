@@ -22,10 +22,11 @@ public class GameManager : Singleton<GameManager> {
 	public string LanguageCode = "en";
 	public string LANGPATH = "/Languages/";
 
-	public Rigidbody playerRigidBody;
+	NewPlayerMovement NewPlayerMovement;
 
 	void Start () 
 	{
+		NewPlayerMovement = GameObject.Find("Player").GetComponent<NewPlayerMovement>();
 		TimeRemaining = maxTime;
 		Debug.Log (StringContainer.GetString(1,3));
 		SelectedMagic = 0;
@@ -36,7 +37,7 @@ public class GameManager : Singleton<GameManager> {
 		ui = GameObject.Find ("HUDCanvas").GetComponentsInChildren<UpdateUI> () [0];
 		MagicAbilities = new List<Magic>();
 		Buttons = new List<Button>();
-		playerRigidBody = GameObject.Find("Player").GetComponent<Rigidbody>();
+		// playerRigidBody = GameObject.Find("Player").GetComponent<Rigidbody>();
 	}
 
 	void Update () 
@@ -86,27 +87,29 @@ public class GameManager : Singleton<GameManager> {
 				break;
 		}
 
-		Debug.Log (abilityName);
-
 		GameManager.Instance.MagicAbilities.Add(magic);
 	}
 
 	public void DoMagic()
 	{
-		if (MagicAbilities.Count > SelectedMagic - 1) {
+		if (MagicAbilities.Count > SelectedMagic) {
 			MagicAbilities[SelectedMagic].Execute();
 		}
 	}
 
 	public void HandleMagicGemCount()
 	{
-		// if (!playerRigidBody.useGravity) {
-		// 	Gems -= Time.deltaTime * MagicAbilities[0].GemUsage;
-		// }
+		if (MagicAbilities.Count > 0) {
 
-		// if (Gems < 1) {
-		// 	playerRigidBody.useGravity = true;
-		// }
+			if (NewPlayerMovement.gravity == 0f) {
+				Gems -= Time.deltaTime * MagicAbilities[0].GemUsage;
+			}
+
+			if (Gems < 1) {
+				MagicAbilities[SelectedMagic].End();
+			}
+
+		}
 	}
 	
 	

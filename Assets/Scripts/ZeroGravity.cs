@@ -15,6 +15,7 @@ namespace Kewb
 		public int GemUsage { get; set; }
 		public bool Ready = true;
 		public string GameName { get; set; }
+		public bool InUse { get; set; }
 
 		public ZeroGravity()
 		{
@@ -25,7 +26,17 @@ namespace Kewb
 
 		public void Execute() 
 		{
-			GameManager.Instance.playerRigidBody.useGravity = !GameManager.Instance.playerRigidBody.useGravity;
+			InUse = true;
+			Debug.Log("Magic is happening!!");
+			NewPlayerMovement NewPlayerMovement = GameObject.Find("Player").GetComponent<NewPlayerMovement>();
+			NewPlayerMovement.gravity = 0;
+		}
+
+		public void End() 
+		{
+			InUse = false;
+			NewPlayerMovement NewPlayerMovement = GameObject.Find("Player").GetComponent<NewPlayerMovement>();
+			NewPlayerMovement.gravity = 20f;
 		}
 
 

@@ -16,7 +16,9 @@ namespace Kewb
 		string Name { get; set; }
 		int GemUsage { get; set; }
 		string GameName { get; set; }
+		bool InUse { get; set; }
 		void Execute();
+		void End();
 	}
 }
 

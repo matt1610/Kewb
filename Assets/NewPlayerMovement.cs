@@ -51,7 +51,10 @@ public class NewPlayerMovement : MonoBehaviour {
         }
 		TrampolineJump = false;
 		transform.Rotate(0, h * turnSpeed, 0);
-        moveDirection.y -= gravity * Time.deltaTime;
+        if(gravity > 0) 
+		{
+			moveDirection.y -= gravity * Time.deltaTime;
+		}
         controller.Move(moveDirection * Time.deltaTime);
 	}
 }
