@@ -26,10 +26,14 @@ namespace Kewb
 
 		public void Execute() 
 		{
-			InUse = true;
-			Debug.Log("Magic is happening!!");
-			NewPlayerMovement NewPlayerMovement = GameObject.Find("Player").GetComponent<NewPlayerMovement>();
-			NewPlayerMovement.gravity = 0;
+			if(InUse) 
+			{
+				End();
+			} else {
+				NewPlayerMovement NewPlayerMovement = GameObject.Find("Player").GetComponent<NewPlayerMovement>();
+				NewPlayerMovement.gravity = 0;
+				InUse = true;
+			}
 		}
 
 		public void End() 
