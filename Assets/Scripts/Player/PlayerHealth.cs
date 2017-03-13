@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Kewb;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,21 +13,22 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    public UpdateUI uiManager {get;set;}
+
 
     Animator anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
-    //PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
 
 
     void Awake ()
     {
+        uiManager = GameObject.Find ("HUDCanvas").GetComponent<UpdateUI> ();
         anim = GetComponent <Animator> ();
-        playerAudio = GetComponent <AudioSource> ();
-        playerMovement = GetComponent <PlayerMovement> ();
-        //playerShooting = GetComponentInChildren <PlayerShooting> ();
+        // playerAudio = GetComponent <AudioSource> ();
+        playerMovement = GameObject.Find ("Player").GetComponent <PlayerMovement> ();
         currentHealth = startingHealth;
     }
 
@@ -53,9 +55,9 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        playerAudio.Play ();
+        // playerAudio.Play ();
 
-        if(currentHealth <= 0 && !isDead)
+        if(currentHealth < 0 && !isDead)
         {
             Death ();
         }
@@ -64,16 +66,18 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
+        Debug.Log("DEAD.");
         isDead = true;
 
         //playerShooting.DisableEffects ();
 
-        anim.SetTrigger ("Die");
+        // anim.SetTrigger ("Die");
 
-        playerAudio.clip = deathClip;
-        playerAudio.Play ();
+        // playerAudio.clip = deathClip;
+        // playerAudio.Play ();
 
-        playerMovement.enabled = false;
+        // playerMovement.enabled = false;
+        uiManager.EndGameWithText(Color.red, StringContainer.GetString(1,2));
         //playerShooting.enabled = false;
     }
 

@@ -37,7 +37,6 @@ public class GameManager : Singleton<GameManager> {
 		ui = GameObject.Find ("HUDCanvas").GetComponentsInChildren<UpdateUI> () [0];
 		MagicAbilities = new List<Magic>();
 		Buttons = new List<Button>();
-		// playerRigidBody = GameObject.Find("Player").GetComponent<Rigidbody>();
 	}
 
 	void Update () 

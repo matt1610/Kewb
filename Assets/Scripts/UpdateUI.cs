@@ -49,6 +49,17 @@ public class UpdateUI : MonoBehaviour {
 		anim.SetBool ("Down", true);
 	}
 
+	public void EndGameWithText(Color theColor, string diedText)
+	{
+		Text LC = GameObject.Find ("LevelCompleteText").GetComponent<Text>();
+		LC.enabled = true;
+		LC.text = diedText;
+		Image bgimage = GameObject.Find ("LevelCompleteBG").GetComponent<Image>();
+		bgimage.color = theColor;
+		Animator anim = GameObject.Find ("LevelCompleteBG").GetComponent<Animator> ();
+		anim.SetBool ("Down", true);
+	}
+
 	private string FormatTime(float timeInSeconds)
 	{
 		return string.Format ("{0}:{1:00}", Mathf.FloorToInt (timeInSeconds / 60), Mathf.FloorToInt (timeInSeconds % 60));

@@ -32,5 +32,11 @@
 			<Value>Zero Gravity</Value>
 		</String>
 
+
+		<!-- Magic -->
+		<String page="1" key="2">
+			<Value>You Died</Value>
+		</String>
+
 	</Strings>
 </Languages>
